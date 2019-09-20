@@ -1,26 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import BreweryList from './BreweryList'
 
-function App() {
-  return (
-    <div className="App">
+export default class App extends React.Component {
+
+  state = {
+    allBreweries: []
+  }
+
+  componentDidMount() {
+    fetch(`http://localhost:3000/breweries`)
+    .then(res => res.json())
+    .then(breweries => {
+      this.setState({allBreweries: breweries})
+    })
+  }
+
+
+  render () {
+    // console.log(this.state.allBreweries);
+    return (
+      <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>San Diego Breweries</h1>
       </header>
+      <BreweryList breweries={this.state.allBreweries} />
     </div>
-  );
+    );
+  }
 }
-
-export default App;
