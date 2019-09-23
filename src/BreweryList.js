@@ -67,7 +67,7 @@ onClose = (props) => {
 
 
     return (
-      <div className="maps">
+      <div className={maps}>
       <Map
         google={this.props.google}
         onReady={this.fetchplaces}

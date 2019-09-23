@@ -24,3 +24,6 @@ yarn-error.log*
 
 #API KEY IN ENV
 .env
+
+#Images
+.Notes
