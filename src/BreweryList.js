@@ -1,11 +1,12 @@
 import React from 'react';
 import { Map, GoogleApiWrapper, Marker} from 'google-maps-react';
 import InfoWindowEx from "./InfoWindowEx";
-import { maps } from './BreweryList.module.scss'
+import maps  from './BreweryList.module.scss'
+import Nav from './Nav'
 
 
 const mapstyles = {
-  height: '60%',
+  height: '80%',
   width:'80%'}
 
 
@@ -68,6 +69,7 @@ onClose = (props) => {
 
     return (
       <div className={maps}>
+        <div><Nav handleLogOut={this.props.handleLogOut} /></div>
       <Map
         google={this.props.google}
         onReady={this.fetchplaces}

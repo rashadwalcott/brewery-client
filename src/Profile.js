@@ -1,5 +1,6 @@
 import React from 'react';
 import FavoriteBrews from './FavoriteBrews'
+import Nav from './Nav'
 
 export default class Profile extends React.Component {
 
@@ -7,7 +8,8 @@ export default class Profile extends React.Component {
     const favs = this.props.favoriteBrews.map(brew => <FavoriteBrews brew={brew} key={brew.id} />)
     return(
       <div className="profile">
-      <h1>Welcome {this.props.username}!</h1>
+      <div><Nav handleLogOut={this.props.handleLogOut}/></div>
+        <h1>Welcome {this.props.username}!</h1>
       {favs}
       </div>
     )

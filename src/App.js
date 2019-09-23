@@ -61,6 +61,11 @@ class App extends React.Component {
       })
     })
     }
+
+    handleLogOut = () => {
+   localStorage.clear()
+   this.props.history.push('/')
+ }
   render () {
     // console.log(this.state.favoriteBrews);
     return (
@@ -69,7 +74,8 @@ class App extends React.Component {
             path={'/breweries'}
             render={routerProps => <BreweryList {...routerProps}
             username={this.state.username}
-            addFavorite={this.addFavorite} /> }/>
+            addFavorite={this.addFavorite}
+            handleLogOut={this.handleLogOut}/> }/>
 
             <Route
               path={'/login'}
@@ -85,11 +91,13 @@ class App extends React.Component {
               path={'/profile'}
               render={routerProps => <Profile {...routerProps}
               username={this.state.username}
-              favoriteBrews={this.state.favoriteBrews}/>} />
+              favoriteBrews={this.state.favoriteBrews}
+              handleLogOut={this.handleLogOut}/>} />
 
             <Route
               exact path={'/'}
-              render={routerProps => <LandingPage {...routerProps} />} />
+              render={routerProps => <LandingPage {...routerProps}
+              handleLogOut={this.handleLogOut}/>} />
   </Switch>
     );
   }
