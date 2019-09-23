@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom'
 import { Map, GoogleApiWrapper, Marker} from 'google-maps-react';
 import InfoWindowEx from "./InfoWindowEx";
 import { maps } from './BreweryList.module.scss'
@@ -45,19 +44,8 @@ test = (beer) => {
 
   render () {
     // console.log(this.selectedBeer);
+    console.log(this.props);
 
-    const beers = this.props.breweries.map(beer => {
-      return <Marker
-      position={{lat:beer.latitude,lng: beer.longitude}}
-      icon={{
-        url: "https://img.icons8.com/officexs/2x/bavarian-beer-mug.png"
-      }}
-      key={beer.id}
-      beer={beer}
-      onClick ={this.onMarkerClick}
-       />
-
-    })
 
     return (
       <div className="maps">
@@ -72,7 +60,7 @@ test = (beer) => {
           name={'Current location'}
         icon={{url: "http://maps.google.com/mapfiles/ms/icons/purple-dot.png"}}
         />
-        {beers}
+      {this.props.beers}
         <InfoWindowEx
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}
