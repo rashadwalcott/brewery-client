@@ -1,5 +1,7 @@
 import React from 'react';
-import { Map, GoogleApiWrapper, Marker,InfoWindow } from 'google-maps-react';
+import ReactDOM from 'react-dom'
+import { Map, GoogleApiWrapper, Marker} from 'google-maps-react';
+import InfoWindowEx from "./InfoWindowEx";
 import { maps } from './BreweryList.module.scss'
 
 
@@ -18,10 +20,6 @@ export class BreweryList extends React.Component {
     activeMarker: {}
   }
 
-  fetchplaces(mapProps,map){
-    const {google} = mapProps;
-    const service = new google.maps.places.PlacesService(map)
-  }
 
   onMarkerClick = (props, marker, e) => {
     this.setState({
@@ -41,10 +39,10 @@ onClose = (props) => {
 
 }
 
-onButtonClick = () => {
-
-  console.log("SAVED");
+test = () => {
+  console.log("Save Me!");
 }
+
   render () {
     // console.log(this.selectedBeer);
 
@@ -75,16 +73,16 @@ onButtonClick = () => {
         icon={{url: "http://maps.google.com/mapfiles/ms/icons/purple-dot.png"}}
         />
         {beers}
-        <InfoWindow
+        <InfoWindowEx
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}
-          onClose={this.onClose} >
-
-          <div>
-            <h1>{this.state.selectedBeer.name}</h1>
-            <button onClick={this.onButtonClick}> Save Me </button>
+          onClose={this.onClose}
+          >
+          <div id="save">
+            <h2>{this.state.selectedBeer.name}</h2>
+            <button onClick = {() =>{this.test()}}>SAVE</button>
             </div>
-          </InfoWindow>
+          </InfoWindowEx>
         </Map>
     </div>
     );
