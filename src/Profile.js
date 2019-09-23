@@ -1,23 +1,14 @@
 import React from 'react';
-
+import FavoriteBrews from './FavoriteBrews'
 
 export default class Profile extends React.Component {
 
-  state = {
-    clicked: false,
-    jobShow: {}
-  }
-
-  handleClick = (jobObj) => {
-    this.setState({jobShow: jobObj, clicked: true})
-  }
-
   render(){
-    console.log(this.props);
+    const favs = this.props.favoriteBrews.map(brew => <FavoriteBrews brew={brew} key={brew.id} />)
     return(
       <div className="profile">
       <h1>Welcome {this.props.username}!</h1>
-
+      {favs}
       </div>
     )
   }

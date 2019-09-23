@@ -12,11 +12,20 @@ const mapstyles = {
 export class BreweryList extends React.Component {
 
   state={
+      allBreweries: [],
     selectedBeer: {},
     clicked: false,
     beerMarker: {},
     showingInfoWindow: false,
     activeMarker: {}
+  }
+
+  componentDidMount() {
+    fetch(`http://localhost:3000/breweries`)
+    .then(res => res.json())
+    .then(breweries => {
+      this.setState({allBreweries: breweries})
+    })
   }
 
 
@@ -38,13 +47,23 @@ onClose = (props) => {
 
 }
 
-test = (beer) => {
-  console.log(beer);
-}
+
 
   render () {
-    // console.log(this.selectedBeer);
-    console.log(this.props);
+
+    const beers = this.state.allBreweries.map(beer => {
+      return <Marker
+      position={{lat:beer.latitude,lng: beer.longitude}}
+      icon={{
+        url: "https://img.icons8.com/officexs/2x/bavarian-beer-mug.png"
+      }}
+      key={beer.id}
+      beer={beer}
+      onClick ={this.onMarkerClick}
+       />
+
+    })
+    // console.log(this.state.allBreweries)
 
 
     return (
@@ -60,7 +79,7 @@ test = (beer) => {
           name={'Current location'}
         icon={{url: "http://maps.google.com/mapfiles/ms/icons/purple-dot.png"}}
         />
-      {this.props.beers}
+      {beers}
         <InfoWindowEx
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}
@@ -68,7 +87,7 @@ test = (beer) => {
           >
           <div id="save">
             <h2>{this.state.selectedBeer.name}</h2>
-            <button onClick = {() =>{this.test(this.state.selectedBeer)}}>SAVE</button>
+            <button onClick = {() =>{this.props.addFavorite(this.state.selectedBeer)}}>SAVE</button>
             </div>
           </InfoWindowEx>
         </Map>
