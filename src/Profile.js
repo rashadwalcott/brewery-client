@@ -13,7 +13,7 @@ export default class Profile extends React.Component {
   }
 
   render(){
-
+    console.log(this.props);
     return(
       <div className="profile">
       <h1>Welcome {this.props.username}!</h1>

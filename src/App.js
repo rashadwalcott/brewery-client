@@ -12,6 +12,13 @@ class App extends React.Component {
    username: '',
    user_id: ''
  }
+ componentDidMount(){
+    if(localStorage.token){
+      this.getProfile()
+    } else {
+      this.props.history.push('/breweries')
+    }
+  }
 
   getProfile = () => {
       fetch('http://localhost:3000/profile',{
@@ -26,7 +33,7 @@ class App extends React.Component {
       })
     }
   render () {
-    // console.log(this.state.allBreweries);
+    // console.log(this.state);
     return (
       <Switch>
           <Route
