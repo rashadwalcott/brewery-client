@@ -39,8 +39,8 @@ onClose = (props) => {
 
 }
 
-test = () => {
-  console.log("Save Me!");
+test = (beer) => {
+  console.log(beer);
 }
 
   render () {
@@ -80,7 +80,7 @@ test = () => {
           >
           <div id="save">
             <h2>{this.state.selectedBeer.name}</h2>
-            <button onClick = {() =>{this.test()}}>SAVE</button>
+            <button onClick = {() =>{this.test(this.state.selectedBeer)}}>SAVE</button>
             </div>
           </InfoWindowEx>
         </Map>
