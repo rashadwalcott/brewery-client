@@ -1,4 +1,51 @@
-.App {
+.maps {
+
+}
+
+  .landingpage {
+    text-align: center;
+  }
+
+  body {
+    background-image: url("sandiegobeer.jpg");
+    background-attachment: fixed;
+     background-size: cover;
+     color: #ed8c0c;
+     text-align: center;
+  }
+  .nav {
+    border-radius: 1em;
+    background-color: #B0C4DE;
+    padding: 1em;
+    text-align: left;
+    color: #e88420;
+    }
+    button {
+      float: right;
+      background-color: #B0C4DE;
+      border: 1px solid black;
+      font-size: 16px;
+      border-radius: 1em;
+      padding: .3em;
+      cursor: pointer;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*ORIGINAL CSS */
+
+/* .App {
   text-align: center;
 }
 
@@ -30,4 +77,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */

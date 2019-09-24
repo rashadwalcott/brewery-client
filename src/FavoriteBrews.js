@@ -1,12 +1,12 @@
 import React from 'react';
-import favbrew from './FavoriteBrews.module.scss'
+
 
 export default class FavoriteBrews extends React.Component {
 
   render(){
     // console.log(this.props);
     return(
-      <div className={favbrew}>
+      <div className="favoriteBrews">
       <div>
       <h1>{this.props.brew.name}</h1>
       <h3>{this.props.brew.street}</h3>

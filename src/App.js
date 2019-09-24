@@ -5,6 +5,7 @@ import Login from './Login'
 import Signup from './Signup'
 import Profile from './Profile'
 import LandingPage from './LandingPage'
+import app from './App.css'
 
 class App extends React.Component {
   //Initializing the state

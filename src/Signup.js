@@ -40,7 +40,7 @@ export default class Signup extends React.Component {
 
   render () {
     return (
-      <div className='form'>
+      <div className='signup'>
       <h1>Sign Up</h1>
       <form onSubmit={this.handleSubmit}>
         <label> Username:
