@@ -11,13 +11,14 @@ class App extends React.Component {
   state = {
    username: '',
    user_id: '',
-   favoriteBrews: []
+   favoriteBrews: [],
+   userFavs: []
  }
  componentDidMount(){
     if(localStorage.token){
       this.getProfile()
     } else {
-      this.props.history.push('/breweries')
+      this.props.history.push('/')
     }
   }
 
@@ -29,7 +30,8 @@ class App extends React.Component {
       })
       .then(res => res.json())
       .then(user => {
-        this.setState({username: user.username, user_id: user.id})
+        console.log(user);
+        this.setState({username: user.username, user_id: user.id, userFavs: user.favorites})
         this.getFavorites(user.id)
       })
     }
@@ -62,6 +64,24 @@ class App extends React.Component {
     })
     }
 
+    removeFav= (brew) => {
+      let index = this.state.favoriteBrews.indexOf(brew)
+      let newFav = [...this.state.favoriteBrews]
+      newFav.splice(index,1)
+      this.setState({
+        favoriteBrews: newFav
+      })
+
+      brew = this.state.userFavs.find(fav => {
+        return brew.id === fav.brewery_id
+      })
+      fetch(`http://localhost:3000/favorites/${brew.id}`,{
+        method: 'DELETE'
+      })
+
+
+    }
+
     handleLogOut = () => {
    localStorage.clear()
    this.props.history.push('/')
@@ -92,7 +112,8 @@ class App extends React.Component {
               render={routerProps => <Profile {...routerProps}
               username={this.state.username}
               favoriteBrews={this.state.favoriteBrews}
-              handleLogOut={this.handleLogOut}/>} />
+              handleLogOut={this.handleLogOut}
+              removeFav = {this.removeFav}/>} />
 
             <Route
               exact path={'/'}

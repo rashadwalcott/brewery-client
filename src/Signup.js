@@ -29,7 +29,6 @@ export default class Signup extends React.Component {
         localStorage.username = data.user.username
         localStorage.id = data.user.id
         this.props.getProfile()
-        console.log(this.state);
         this.props.history.push('/breweries')
       }
     })

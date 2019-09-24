@@ -64,9 +64,8 @@ onClose = (props) => {
        />
 
     })
-    // console.log(this.state.allBreweries)
 
-
+console.log(this.state.selectedBeer);
     return (
       <div className={maps}>
         <div><Nav handleLogOut={this.props.handleLogOut} /></div>
