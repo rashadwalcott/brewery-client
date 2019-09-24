@@ -7,11 +7,12 @@ export default class Login extends React.Component {
     username: '',
     password: ''
   }
-
+  //Setting the state for the form values
   handleChange = (e) => {
     this.setState({[e.target.name]: e.target.value})
   }
 
+  //Posting to the backend to grab the user
   handleSubmit = (e) => {
     e.preventDefault()
     fetch('http://localhost:3000/login', {
@@ -33,6 +34,10 @@ export default class Login extends React.Component {
       }
     })
   }
+
+  goBack = () => {
+    this.props.history.push('/')
+  }
   render () {
     return (
       <div className='form'>
@@ -50,6 +55,7 @@ export default class Login extends React.Component {
           <br></br>
           <input type='submit' value='Log In'/>
         </form>
+        <button onClick={this.goBack}> Back</button>
       </div>
     )
   }

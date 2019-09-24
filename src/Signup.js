@@ -7,11 +7,11 @@ export default class Signup extends React.Component {
     username: '',
     password: ''
   }
-
+  //Setting the state
   handleChange = (e) => {
     this.setState({[e.target.name]: e.target.value})
   }
-
+  //Posting to the backend to create a new user
   handleSubmit = (e) => {
     e.preventDefault()
     fetch('http://localhost:3000/users', {
@@ -34,6 +34,10 @@ export default class Signup extends React.Component {
     })
   }
 
+  goBack = () => {
+    this.props.history.push('/')
+  }
+
   render () {
     return (
       <div className='form'>
@@ -51,6 +55,7 @@ export default class Signup extends React.Component {
         <br></br>
         <input type='submit' value='Sign Up' />
       </form>
+      <button onClick={this.goBack}> Back</button>
       </div>
     )
   }

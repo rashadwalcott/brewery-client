@@ -4,7 +4,7 @@ import InfoWindowEx from "./InfoWindowEx";
 import maps  from './BreweryList.module.scss'
 import Nav from './Nav'
 
-
+//Setting the size for the map
 const mapstyles = {
   height: '80%',
   width:'80%'}
@@ -12,6 +12,7 @@ const mapstyles = {
 
 export class BreweryList extends React.Component {
 
+//Initializing the state
   state={
       allBreweries: [],
     selectedBeer: {},
@@ -20,7 +21,7 @@ export class BreweryList extends React.Component {
     showingInfoWindow: false,
     activeMarker: {}
   }
-
+  //Grabbing the breweries upon the application loading
   componentDidMount() {
     fetch(`http://localhost:3000/breweries`)
     .then(res => res.json())
@@ -29,7 +30,7 @@ export class BreweryList extends React.Component {
     })
   }
 
-
+  //Setting the state for when the specific brewery is clicked
   onMarkerClick = (props, marker, e) => {
     this.setState({
       selectedBeer: props.beer,
@@ -38,6 +39,7 @@ export class BreweryList extends React.Component {
     })
 }
 
+  //Function for closing the InfowWindow for that brewery
 onClose = (props) => {
   if(this.state.showingInfoWindow){
     this.setState({
@@ -52,6 +54,7 @@ onClose = (props) => {
 
   render () {
 
+    //Iterating through the breweries and setting attributes to show it on the map
     const beers = this.state.allBreweries.map(beer => {
       return <Marker
       position={{lat:beer.latitude,lng: beer.longitude}}
@@ -65,7 +68,6 @@ onClose = (props) => {
 
     })
 
-console.log(this.state.selectedBeer);
     return (
       <div className={maps}>
         <div><Nav handleLogOut={this.props.handleLogOut} /></div>
@@ -92,7 +94,7 @@ console.log(this.state.selectedBeer);
             </div>
           </InfoWindowEx>
         </Map>
-    </div>
+      </div>
     );
   }
 }

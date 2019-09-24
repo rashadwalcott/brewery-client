@@ -10,6 +10,7 @@ export default class Profile extends React.Component {
       <div className="profile">
       <div><Nav handleLogOut={this.props.handleLogOut}/></div>
         <h1>Welcome {this.props.username}!</h1>
+        <button onClick={this.props.deleteAccount}>Delete Account </button>
       {favs}
       </div>
     )

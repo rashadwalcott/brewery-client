@@ -7,13 +7,15 @@ import Profile from './Profile'
 import LandingPage from './LandingPage'
 
 class App extends React.Component {
-
+  //Initializing the state
   state = {
    username: '',
    user_id: '',
    favoriteBrews: [],
    userFavs: []
  }
+
+ //The condition upon the application loading
  componentDidMount(){
     if(localStorage.token){
       this.getProfile()
@@ -22,6 +24,7 @@ class App extends React.Component {
     }
   }
 
+  //Grabbing the profile and setting the intial state to be carried over to other Components
   getProfile = () => {
       fetch('http://localhost:3000/profile',{
         headers: {
@@ -30,13 +33,13 @@ class App extends React.Component {
       })
       .then(res => res.json())
       .then(user => {
-        console.log(user);
         this.setState({username: user.username, user_id: user.id, userFavs: user.favorites})
         this.getFavorites(user.id)
       })
     }
 
-    addFavorite = (beer) => {
+    //Sending the favorite breweries to the backend
+    addFavorite = (brew) => {
       fetch('http://localhost:3000/favorites', {
       method: 'POST',
       headers: {
@@ -45,7 +48,7 @@ class App extends React.Component {
       },
       body: JSON.stringify({
         user_id: this.state.user_id,
-        brewery_id: beer.id
+        brewery_id: brew.id
       })
     }).then(res => res.json())
     .then(() => {
@@ -54,6 +57,7 @@ class App extends React.Component {
       }
     )
   }
+  //Grabbing back the favorite breweries to set the state
     getFavorites = (id) => {
       fetch(`http://localhost:3000/users/${id}`)
     .then(res => res.json())
@@ -64,6 +68,7 @@ class App extends React.Component {
     })
     }
 
+    //Optimistic rendering the removal of the favorite breweries
     removeFav= (brew) => {
       let index = this.state.favoriteBrews.indexOf(brew)
       let newFav = [...this.state.favoriteBrews]
@@ -82,8 +87,17 @@ class App extends React.Component {
 
     }
 
+    //Function for logging the user out of the system
     handleLogOut = () => {
    localStorage.clear()
+   this.props.history.push('/')
+ }
+
+ //Deleting the user
+ deleteAccount = () => {
+   fetch(`http://localhost:3000/users/${this.state.user_id}`,{
+     method: 'DELETE'
+   }).then(localStorage.clear())
    this.props.history.push('/')
  }
   render () {
@@ -113,7 +127,8 @@ class App extends React.Component {
               username={this.state.username}
               favoriteBrews={this.state.favoriteBrews}
               handleLogOut={this.handleLogOut}
-              removeFav = {this.removeFav}/>} />
+              removeFav = {this.removeFav}
+              deleteAccount={this.deleteAccount}/>} />
 
             <Route
               exact path={'/'}
