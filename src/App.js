@@ -51,7 +51,10 @@ class App extends React.Component {
         brewery_id: brew.id
       })
     }).then(res => res.json())
-    .then(() => {
+    .then((fav) => {
+      this.setState({
+        userFavs: [...this.state.userFavs,fav]
+      })
       window.alert('Saved Go To Profile For More')
       this.getFavorites(this.state.user_id)
       }
@@ -77,10 +80,10 @@ class App extends React.Component {
         favoriteBrews: newFav
       })
 
-      brew = this.state.userFavs.find(fav => {
+      let brewId = this.state.userFavs.find(fav => {
         return brew.id === fav.brewery_id
       })
-      fetch(`http://localhost:3000/favorites/${brew.id}`,{
+      fetch(`http://localhost:3000/favorites/${brewId.id}`,{
         method: 'DELETE'
       })
 
