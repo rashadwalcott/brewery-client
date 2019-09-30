@@ -2,6 +2,7 @@ import React from 'react';
 import { Map, GoogleApiWrapper, Marker} from 'google-maps-react';
 import InfoWindowEx from "./InfoWindowEx";
 import Nav from './Nav'
+
 import brewery from './BreweryList.module.scss'
 
 //Setting the size for the map
@@ -20,6 +21,7 @@ export class BreweryList extends React.Component {
     selectedBeer: {},
     clicked: false,
     beerMarker: {},
+    searchTerm: '',
     showingInfoWindow: false,
     activeMarker: {}
   }
@@ -52,6 +54,23 @@ onClose = (props) => {
 
 }
 
+handleInputChange=(event) => {
+  this.setState({
+    searchTerm: event.target.value
+  })
+  const filteredBreweries = this.state.allBreweries.filter(brewery => brewery.name.toLowerCase().includes(this.state.searchTerm.toLowerCase()))
+ event.target.value !== '' ?
+  this.setState({
+    allBreweries: filteredBreweries
+  }) :
+  fetch(`http://localhost:3000/breweries`)
+  .then(res => res.json())
+  .then(breweries => {
+    this.setState({allBreweries: breweries})
+  })
+
+}
+
 
 
   render () {
@@ -73,6 +92,7 @@ onClose = (props) => {
     return (
       <div className={brewery}>
         <div><Nav handleLogOut={this.props.handleLogOut} /></div>
+        <input placeholder="Search for.." value ={this.state.searchTerm} onChange ={this.handleInputChange} type='search' />
       <Map
         google={this.props.google}
         onReady={this.fetchplaces}
