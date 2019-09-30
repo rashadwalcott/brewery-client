@@ -1,4 +1,16 @@
-.maps {
+/* body {
+  background-image: url("sandiegobeer.jpg");
+  background-attachment: fixed;
+   background-size: cover;
+   color: #ed8c0c;
+   text-align: center;
+}
+.favoriteBrews > h1 {
+  color: darkblue
+} */
+
+
+/* .maps {
 
 }
 
@@ -6,13 +18,7 @@
     text-align: center;
   }
 
-  body {
-    background-image: url("sandiegobeer.jpg");
-    background-attachment: fixed;
-     background-size: cover;
-     color: #ed8c0c;
-     text-align: center;
-  }
+
   .nav {
     border-radius: 1em;
     background-color: #B0C4DE;
@@ -28,7 +34,7 @@
       border-radius: 1em;
       padding: .3em;
       cursor: pointer;
-    }
+    } */
 
 
 

@@ -2,11 +2,14 @@ import React from 'react';
 import { Map, GoogleApiWrapper, Marker} from 'google-maps-react';
 import InfoWindowEx from "./InfoWindowEx";
 import Nav from './Nav'
+import brewery from './BreweryList.module.scss'
 
 //Setting the size for the map
 const mapstyles = {
   height: '80%',
-  width:'80%'}
+  width:'50%',
+  padding: '.5em',
+  margin: '2em'}
 
 
 export class BreweryList extends React.Component {
@@ -68,12 +71,12 @@ onClose = (props) => {
     })
 
     return (
-      <div className="BreweryList">
+      <div className={brewery}>
         <div><Nav handleLogOut={this.props.handleLogOut} /></div>
       <Map
         google={this.props.google}
         onReady={this.fetchplaces}
-        zoom={15}
+        zoom={11}
         style={mapstyles}
         initialCenter={{lat:32.750505,lng: -117.095794}}
         >
