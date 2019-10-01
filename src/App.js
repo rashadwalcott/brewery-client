@@ -5,6 +5,8 @@ import Login from './Login'
 import Signup from './Signup'
 import Profile from './Profile'
 import LandingPage from './LandingPage'
+import MapContainer from './MapContainer'
+import BreweryMarker from './BreweryMarker'
 import './App.scss';
 
 class App extends React.Component {
@@ -110,7 +112,7 @@ class App extends React.Component {
       <Switch>
           <Route
             path={'/breweries'}
-            render={routerProps => <BreweryList {...routerProps}
+            render={routerProps => <MapContainer {...routerProps}
             username={this.state.username}
             addFavorite={this.addFavorite}
             handleLogOut={this.handleLogOut}/> }/>

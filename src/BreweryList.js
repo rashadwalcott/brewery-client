@@ -8,9 +8,9 @@ import brewery from './BreweryList.module.scss'
 //Setting the size for the map
 const mapstyles = {
   height: '80%',
-  width:'50%',
+  width:'90%',
   padding: '.5em',
-  margin: '2em'}
+  margin: '3em'}
 
 
 export class BreweryList extends React.Component {
@@ -95,10 +95,9 @@ handleInputChange=(event) => {
         <input placeholder="Search for.." value ={this.state.searchTerm} onChange ={this.handleInputChange} type='search' />
       <Map
         google={this.props.google}
-        onReady={this.fetchplaces}
-        zoom={11}
+        zoom={13}
         style={mapstyles}
-        initialCenter={{lat:32.750505,lng: -117.095794}}
+        initialCenter={{lat:32.7353,lng: -117.1490}}
         >
         <Marker
           name={'Current location'}
