@@ -3,11 +3,11 @@ import BreweryMap from './BreweryMap'
 
 class MapContainer extends React.Component {
   render () {
-    // console.log(this.props);
+    // console.log(this.props.addFavorite);
   return (
     <div>
         <BreweryMap
-          props={this.props}
+          addFavorite={this.props.addFavorite}
           googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${process.env.REACT_APP_GOOGLE_API_KEY}`}
           loadingElement={<div style={{ height: `100%`, }} />}
           containerElement={<div style={{ height: `400px` }} />}

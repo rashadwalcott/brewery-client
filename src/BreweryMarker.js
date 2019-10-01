@@ -37,10 +37,13 @@ return (
   >
   {this.state.active ?
     <InfoWindow
+    maxWidth={800}
     defaultPosition={this.props.position}
-    onCloseClick={this.onClose()}>
-    <div>{this.props.brewery.name}
-    <button onClick = {() =>{this.props.props.addFavorite(this.state.selectedBrewery)}}>SAVE</button>
+    onCloseClick={this.onClose}>
+    <div>
+    <h2>{this.props.brewery.name}</h2>
+    <br></br>
+    <button onClick = {() =>{this.props.addFavorite(this.state.activeMarker)}}>SAVE</button>
     </div>
     </InfoWindow>
     :

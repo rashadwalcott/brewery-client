@@ -34,7 +34,7 @@ render () {
       position={{lat:Number(brewery.latitude),lng: Number(brewery.longitude)}}
       selectedBrewery={this.state.selectedBrewery}
       clickHandle = {this.handleClick}
-      props={this.props}
+      addFavorite={this.props.addFavorite}
     key={brewery.id}
     brewery={brewery}
 
