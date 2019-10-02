@@ -33,14 +33,14 @@ return (
   <Marker
   position = {this.props.position}
   onClick = {()=> this.handleClick(this.props.brewery)}
-  animation={window.google.maps.Animation.BOUNCE}
+  animation={window.google.maps.Animation.DROP}
   >
-  {this.state.active ?
+  {this.state.active  ?
     <InfoWindow
-    maxWidth={800}
+    id={this.state.activeMarker.id}
     defaultPosition={this.props.position}
-    onCloseClick={this.onClose}>
-    <div>
+    onCloseClick={()=> this.setState({active: false})}>
+    <div >
     <h2>{this.props.brewery.name}</h2>
     <br></br>
     <button onClick = {() =>{this.props.addFavorite(this.state.activeMarker)}}>SAVE</button>

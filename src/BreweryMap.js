@@ -8,7 +8,8 @@ const styles = require('./GoogleMapStyles.json')
 class BreweryMap extends React.Component {
   state = {
     allBreweries: [],
-    selectedBrewery: false
+    selectedBrewery: false,
+    searchTerm: ''
   }
 
   toggleOpen = () => {
@@ -27,6 +28,24 @@ class BreweryMap extends React.Component {
   handleClick = (brewery, event) => {
     this.setState({selectedBrewery: brewery})
   }
+
+  handleInputChange=(event) => {
+    this.setState({
+      searchTerm: event.target.value
+    })
+    const filteredBreweries = this.state.allBreweries.filter(brewery => brewery.name.toLowerCase().includes(this.state.searchTerm.toLowerCase()))
+   event.target.value !== '' ?
+    this.setState({
+      allBreweries: filteredBreweries
+    }) :
+    fetch(`http://localhost:3000/breweries`)
+    .then(res => res.json())
+    .then(breweries => {
+      this.setState({allBreweries: breweries})
+    })
+
+  }
+
 render () {
   //Iterating through the breweries and setting attributes to show it on the map
   const eachBrewery = this.state.allBreweries.map(brewery =>
@@ -45,6 +64,8 @@ render () {
   // console.log(this.state.allBreweries);
   return (
     <div>
+    <div><Nav handleLogOut={this.props.handleLogOut} /></div>
+    <input placeholder="Search for.." value ={this.state.searchTerm} onChange ={this.handleInputChange} type='search' />
     <GoogleMap
      defaultZoom={12}
      defaultCenter={{lat:32.750505,lng: -117.095794}}
