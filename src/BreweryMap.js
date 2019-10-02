@@ -8,54 +8,58 @@ const styles = require('./GoogleMapStyles.json')
 class BreweryMap extends React.Component {
   state = {
     allBreweries: [],
+    fullArray: [],
     selectedBrewery: false,
     searchTerm: ''
   }
 
-  toggleOpen = () => {
-    this.setState({isOpen: !this.state.isOpen})
-  }
 
   //Grabbing the breweries upon the application loading
   componentDidMount() {
     fetch(`http://localhost:3000/breweries`)
     .then(res => res.json())
     .then(breweries => {
-      this.setState({allBreweries: breweries})
+      this.setState({allBreweries: breweries, fullArray:breweries})
     })
   }
 
   handleClick = (brewery, event) => {
     this.setState({selectedBrewery: brewery})
+    console.log(this.this.state.selectedBrewery);
   }
 
+  //Search through the breweries
   handleInputChange=(event) => {
     this.setState({
-      searchTerm: event.target.value
-    })
-    const filteredBreweries = this.state.allBreweries.filter(brewery => brewery.name.toLowerCase().includes(this.state.searchTerm.toLowerCase()))
-   event.target.value !== '' ?
-    this.setState({
-      allBreweries: filteredBreweries
-    }) :
-    fetch(`http://localhost:3000/breweries`)
-    .then(res => res.json())
-    .then(breweries => {
-      this.setState({allBreweries: breweries})
-    })
+      searchTerm: event.target.value //Set state can take two arguments so that the second function could be async
+    }, () => {
+      const filteredBreweries = this.state.fullArray.filter(brewery => brewery.name.toLowerCase().includes(this.state.searchTerm.toLowerCase()))
+      console.log(filteredBreweries);
+       this.state.searchTerm !== '' ?
+        this.setState({
+          allBreweries: filteredBreweries
+        }) :
+        this.setState({
+          allBreweries: [...this.state.fullArray]
+        })
+
+    }
+  )
+
 
   }
 
 render () {
+
   //Iterating through the breweries and setting attributes to show it on the map
   const eachBrewery = this.state.allBreweries.map(brewery =>
     <BreweryMarker
       position={{lat:Number(brewery.latitude),lng: Number(brewery.longitude)}}
       selectedBrewery={this.state.selectedBrewery}
-      clickHandle = {this.handleClick}
+      handleClick = {this.handleClick}
       addFavorite={this.props.addFavorite}
-    key={brewery.id}
-    brewery={brewery}
+      key={brewery.id}
+      brewery={brewery}
 
      />
 
@@ -64,8 +68,16 @@ render () {
   // console.log(this.state.allBreweries);
   return (
     <div>
-    <div><Nav handleLogOut={this.props.handleLogOut} /></div>
-    <input placeholder="Search for.." value ={this.state.searchTerm} onChange ={this.handleInputChange} type='search' />
+    <div className ='nav' style={{ position:
+      'absolute', height: '8%', top: 10, bottom: 0, left: 0, right: 0}}>
+    <Nav handleLogOut={this.props.handleLogOut} />
+    </div>
+
+    <div className = 'search' style={{position: 'fixed',top:50,right: 0, float: 'left',padding: '5% 45% 0% 0%'}}>
+    <input  value ={this.state.searchTerm} onChange ={this.handleInputChange} type='search'  />
+    </div>
+
+    <div>
     <GoogleMap
      defaultZoom={12}
      defaultCenter={{lat:32.750505,lng: -117.095794}}
@@ -80,6 +92,7 @@ render () {
      >
      {eachBrewery}
      </GoogleMap>
+     </div>
      </div>
    )
   }

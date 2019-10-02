@@ -8,12 +8,12 @@ export default class LandingPage extends Component {
   render(){
     // console.log(this.props);
     return(
-      <div className='LandingPage'>
+      <div>
          <br></br>
         {localStorage.token ?
-         (<Nav handleLogOut={this.props.handleLogOut}/>) :
+         (<div className='nav'><Nav handleLogOut={this.props.handleLogOut}/></div>) :
          (<p><Link to='/signup'>Sign Up</Link> <Link to='/login'>Login</Link></p>)}
-         
+
       </div>
     )
   }

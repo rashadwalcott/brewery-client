@@ -12,11 +12,11 @@ class MapContainer extends React.Component {
           loadingElement={<div style={{ height: `100%`, }} />}
           containerElement={<div style={{ height: `400px` }} />}
           mapElement={<div style={{
-            height: '200%',
+            height: '185%',
             width: '60%',
             position: 'relative',
-            marginTop: '1%',
-            marginLeft: '38%',
+            marginTop: '7%',
+            marginLeft: '20%',
             border: 'solid 2px black',
             }}
             />}

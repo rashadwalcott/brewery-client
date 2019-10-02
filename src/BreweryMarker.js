@@ -34,6 +34,9 @@ return (
   position = {this.props.position}
   onClick = {()=> this.handleClick(this.props.brewery)}
   animation={window.google.maps.Animation.DROP}
+  icon={{
+    url: "https://img.icons8.com/officexs/2x/bavarian-beer-mug.png"
+  }}
   >
   {this.state.active  ?
     <InfoWindow
