@@ -65,7 +65,7 @@ render () {
 
   )
 
-  console.log(this.state.fullArray);
+  console.log(this.props);
   return (
     <div>
     <div className ='mapNav'  style={{ position:
