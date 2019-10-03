@@ -65,7 +65,7 @@ render () {
 
   )
 
-  // console.log(this.state.allBreweries);
+  console.log(this.state.fullArray);
   return (
     <div>
     <div className ='mapNav'  style={{ position:
@@ -80,7 +80,7 @@ render () {
     <div>
     <GoogleMap
      defaultZoom={12}
-     defaultCenter={{lat:32.750505,lng: -117.095794}}
+     defaultCenter={{lat:40.700850,lng: -73.987510}}
      defaultOptions={{
        disableDefaultUI: true, // disable default map UI
        draggable: true, // make map draggable
