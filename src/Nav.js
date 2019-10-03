@@ -14,7 +14,7 @@ export default class Nav extends React.Component {
     return(
       <React.Fragment>
         <nav className='nav'>
-          <span className='nav'><span><Link to='/' className='nav'><img src={home}/></Link></span><span> <Link to='/breweries' className='nav'><img src={maplogo}/></Link></span><span> <Link to='/profile' className='nav'><img src={favorite}/></Link></span>
+          <span><span><Link to='/' className='nav'><img src={home}/></Link></span><span> <Link to='/breweries' className='nav'><img src={maplogo}/></Link></span><span> <Link to='/profile' className='nav'><img src={favorite}/></Link></span>
             <button onClick={this.props.handleLogOut}><img src={exit2}/></button></span>
         </nav>
       </React.Fragment>

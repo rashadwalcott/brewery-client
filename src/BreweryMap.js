@@ -68,12 +68,12 @@ render () {
   // console.log(this.state.allBreweries);
   return (
     <div>
-    <div className ='nav' style={{ position:
-      'absolute', height: '8%', top: 10, bottom: 0, left: 0, right: 0}}>
+    <div className ='mapNav'  style={{ position:
+      'absolute', height: '5%', top: 13, bottom: 0, left: 5, right: 0}}>
     <Nav handleLogOut={this.props.handleLogOut} />
     </div>
 
-    <div className = 'search' style={{position: 'fixed',top:50,right: 0, float: 'left',padding: '5% 45% 0% 0%'}}>
+    <div className = 'search' style={{position: 'absolute',top:165, right: 0, float: 'left', padding: '0% 45% 0% 0%'}}>
     <input  value ={this.state.searchTerm} onChange ={this.handleInputChange} type='search'  />
     </div>
 

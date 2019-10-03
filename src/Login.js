@@ -53,9 +53,9 @@ export default class Login extends React.Component {
           <input onChange={this.handleChange} value={this.state.password} type='password' name='password' />
           </label>
           <br></br>
-          <input type='submit' value='Log In'/>
+          <input className='loginButton' type='submit' value='Log In'/>
         </form>
-        <button onClick={this.goBack}> Back</button>
+        <button className= 'back' onClick={this.goBack}> Back</button>
       </div>
     )
   }

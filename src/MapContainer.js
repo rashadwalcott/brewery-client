@@ -15,7 +15,7 @@ class MapContainer extends React.Component {
             height: '185%',
             width: '60%',
             position: 'relative',
-            marginTop: '7%',
+            marginTop: '9%',
             marginLeft: '20%',
             border: 'solid 2px black',
             }}
