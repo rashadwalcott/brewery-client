@@ -23,10 +23,6 @@ class BreweryMap extends React.Component {
     })
   }
 
-  handleClick = (brewery, event) => {
-    this.setState({selectedBrewery: brewery})
-    console.log(this.this.state.selectedBrewery);
-  }
 
   //Search through the breweries
   handleInputChange=(event) => {
@@ -56,7 +52,7 @@ render () {
     <BreweryMarker
       position={{lat:Number(brewery.latitude),lng: Number(brewery.longitude)}}
       selectedBrewery={this.state.selectedBrewery}
-      handleClick = {this.handleClick}
+
       addFavorite={this.props.addFavorite}
       key={brewery.id}
       brewery={brewery}
@@ -65,7 +61,7 @@ render () {
 
   )
 
-  console.log(this.props);
+  // console.log(this.props);
   return (
     <div>
     <div className ='mapNav'  style={{ position:

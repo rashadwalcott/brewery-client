@@ -58,7 +58,7 @@ class App extends React.Component {
       this.setState({
         userFavs: [...this.state.userFavs,fav]
       })
-      window.alert('Saved Go To Profile For More')
+      window.alert('Saved! Head To Profile For More')
       this.getFavorites(this.state.user_id)
       }
     )

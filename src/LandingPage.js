@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
-import background from './beerbeach.jpg'
 import Nav from './Nav'
 import logo from './brewerylogo.png'
 import signup from './signup2.png'

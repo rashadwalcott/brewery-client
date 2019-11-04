@@ -3,28 +3,18 @@ import { Marker, InfoWindow} from 'react-google-maps'
 
 class BreweryMarker extends React.Component {
   state = {
-    clicked: false,
+    active: false,
     activeMarker: {},
-    isOpen: false,
-    selected: {}
+    isOpen: false
   }
 
-  // toggleOpen = () => {
-  //   this.setState({isOpen: !this.state.isOpen})
-  // }
   handleClick = (brewery, marker, e) => {
     this.setState({
-      active: true,
-      activeMarker: brewery
+      active: !this.state.active,
+      activeMarker: brewery,
+      isOpen: true
     })
-  }
-  onClose = (props) => {
-    if(this.state.active){
-      this.setState({
-        active: false,
-        activeMarker: null
-      })
-    }
+    // console.log('hi');
   }
   render () {
     // console.log(this.props);
@@ -32,17 +22,16 @@ return (
   <div>
   <Marker
   position = {this.props.position}
-  onClick = {()=> this.handleClick(this.props.brewery)}
+   onClick = {()=> this.handleClick(this.props.brewery)}
   animation={window.google.maps.Animation.DROP}
   icon={{
     url: "https://img.icons8.com/officexs/2x/bavarian-beer-mug.png"
   }}
   >
-  {this.state.active  ?
+  {this.state.active?
     <InfoWindow
-    id={this.state.activeMarker.id}
     defaultPosition={this.props.position}
-    onCloseClick={()=> this.setState({active: false})}>
+    >
     <div >
     <h2>{this.props.brewery.name}</h2>
     <br></br>
