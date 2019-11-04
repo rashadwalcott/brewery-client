@@ -3,7 +3,6 @@ import { Map, GoogleApiWrapper, Marker} from 'google-maps-react';
 import InfoWindowEx from "./InfoWindowEx";
 import Nav from './Nav'
 
-import brewery from './BreweryList.module.scss'
 
 //Setting the size for the map
 const mapstyles = {
@@ -90,7 +89,7 @@ handleInputChange=(event) => {
     })
 
     return (
-      <div className={brewery}>
+      <div className='brewery'>
         <div><Nav handleLogOut={this.props.handleLogOut} /></div>
         <input placeholder="Search for.." value ={this.state.searchTerm} onChange ={this.handleInputChange} type='search' />
       <Map
