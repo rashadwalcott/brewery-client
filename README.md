@@ -1,5 +1,16 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# Brewster_Client
+An application where a user can sign up for an account. Upon signing in a user can see a map of breweries in New York. They can save the breweries they would like to visit. User can also delete breweries from their list.
+# Demo
+<p><a href ="https://youtu.be/Y2Xkjh6oOAU"><img src="https://i.imgur.com/TzRuq1u.jpg" alt="demo-image" width="450" height="300"/></a></p>
+<h1> Tech/framework used </h1>
+<h3> Built with </h3>
+<p> ∙ <a href = "https://reactjs.org/">React </a></p>
+<p> ∙ <a href = "https://css-tricks.com/sass-techniques-from-the-trenches/">SASS </a></p>
+<p> ∙ <a href = "https://www.npmjs.com/package/react-google-maps">React-Google-Maps </a></p>
+<p> ∙ <a href = "https://snazzymaps.com/">Snazzy Maps </a></p>
+
 ## Available Scripts
 
 In the project directory, you can run:
