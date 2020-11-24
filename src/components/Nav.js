@@ -1,9 +1,9 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
-import home from './home.png'
-import maplogo from './map.png'
-import favorite from './email.png'
-import exit2 from './exit2.png'
+import home from '../photos/home.png'
+import maplogo from '../photos/map.png'
+import favorite from '../photos/email.png'
+import exit2 from '../photos/exit2.png'
 export default class Nav extends React.Component {
 
   render(){

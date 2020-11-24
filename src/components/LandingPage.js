@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import Nav from './Nav'
-import logo from './brewerylogo.png'
-import signup from './signup2.png'
-import login from './login.png'
+import logo from '../photos/brewerylogo.png'
+import signup from '../photos/signup2.png'
+import login from '../photos/login.png'
 export default class LandingPage extends Component {
 
   render(){

@@ -1,10 +1,10 @@
 import React from 'react';
 import { Switch, Route, withRouter} from 'react-router-dom'
-import Login from './Login'
-import Signup from './Signup'
-import Profile from './Profile'
-import LandingPage from './LandingPage'
-import MapContainer from './MapContainer'
+import Login from './components/Login'
+import Signup from './components/Signup'
+import Profile from './components/Profile'
+import LandingPage from './components/LandingPage'
+import MapContainer from './map/MapContainer'
 import './App.scss';
 
 class App extends React.Component {

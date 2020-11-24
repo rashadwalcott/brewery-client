@@ -1,7 +1,7 @@
 import React from 'react';
 import { Map, GoogleApiWrapper, Marker} from 'google-maps-react';
 import InfoWindowEx from "./InfoWindowEx";
-import Nav from './Nav'
+import Nav from '../Nav'
 
 
 //Setting the size for the map

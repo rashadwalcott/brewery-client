@@ -8,7 +8,7 @@ class BreweryMarker extends React.Component {
     isOpen: false
   }
 
-  handleClick = (brewery, marker, e) => {
+  handleClick = (brewery) => {
     this.setState({
       active: !this.state.active,
       activeMarker: brewery,

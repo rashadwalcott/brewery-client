@@ -1,7 +1,7 @@
 import React from 'react'
 import { withScriptjs, withGoogleMap, GoogleMap} from "react-google-maps"
 import BreweryMarker from './BreweryMarker'
-import Nav from './Nav'
+import Nav from '../components/Nav'
 
 const styles = require('./GoogleMapStyles.json')
 
