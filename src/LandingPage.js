@@ -24,8 +24,8 @@ export default class LandingPage extends Component {
        </React.Fragment>
           :
           <React.Fragment>
-         (<div className='credentials'><span><Link to='/signup'><img src = {signup}/></Link></span><span> <Link to='/login'><img src = {login}/></Link></span></div>
-       <div className='logo'><img src = {logo}/></div>)
+         (<div className='credentials'><span><Link to='/signup'><img src = {signup} alt = "Sign Up Button"/></Link></span><span> <Link to='/login'><img src = {login} alt="Login Button"/></Link></span></div>
+       <div className='logo'><img src = {logo} alt="Logo"/></div>)
           </React.Fragment>}
       </div>
     )

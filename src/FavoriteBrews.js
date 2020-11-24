@@ -1,5 +1,4 @@
 import React from 'react';
-import favoriteBrews from './BreweryList.module.scss'
 
 export default class FavoriteBrews extends React.Component {
 

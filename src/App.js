@@ -1,12 +1,10 @@
 import React from 'react';
-import BreweryList from './BreweryList'
 import { Switch, Route, withRouter} from 'react-router-dom'
 import Login from './Login'
 import Signup from './Signup'
 import Profile from './Profile'
 import LandingPage from './LandingPage'
 import MapContainer from './MapContainer'
-import BreweryMarker from './BreweryMarker'
 import './App.scss';
 
 class App extends React.Component {
